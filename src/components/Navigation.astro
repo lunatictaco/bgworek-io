@@ -178,8 +178,9 @@ const isVisualsActive = pathname.startsWith('/visuals');
   function initNav() {
     // ── Scroll: darken nav when past top ──────────────
     const nav = document.getElementById('site-nav');
+    const isHome = window.location.pathname === '/';
     function updateScrollState() {
-      nav?.classList.toggle('nav-scrolled', window.scrollY > 60);
+      nav?.classList.toggle('nav-scrolled', !isHome || window.scrollY > 60);
     }
     updateScrollState();
     window.addEventListener('scroll', updateScrollState, { passive: true });

@@ -26,7 +26,6 @@
   :root {
     /* RGB triplets — consumed by Tailwind's rgb(var(--color-x) / alpha) syntax */
     --color-accent:       253 185 0;   /* #FDB900 Microsoft Yellow     */
-    --color-accent-light: 173 51 51;   /* #AD3333 Red-ish brown        */
     --color-accent-dark:  61 219 217;   /* #9CEDEC Blizzard Blue */ 
     --color-section:      255 131 137;   /* #FF8389 Wewak      */
     --bg:    #0a0a0a;
