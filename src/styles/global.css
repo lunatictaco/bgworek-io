@@ -132,5 +132,5 @@
 
 ::view-transition-old(root) { animation: 280ms ease-out fade-out; }
 ::view-transition-new(root) { animation: 280ms ease-out fade-in; }
-::view-transition-old(nav),
-::view-transition-new(nav)  { animation: none; }
+::view-transition-old(nav) { animation: 200ms ease-out fade-out; }
+::view-transition-new(nav) { animation: 200ms ease-in  fade-in; }
