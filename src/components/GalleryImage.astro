@@ -1,0 +1,42 @@
+---
+interface Props {
+  src: string;
+  title: string;
+  description: string;
+  width?: number;
+  height?: number;
+  thumbnail?: string;
+}
+
+const { src, title, description, width = 800, height = 600, thumbnail } = Astro.props;
+const thumbSrc = thumbnail ?? src;
+---
+
+<figure class="gallery-item break-inside-avoid overflow-hidden rounded-lg group relative cursor-pointer">
+  <a
+    class="gallery-anchor block overflow-hidden rounded-lg"
+    href={src}
+    data-pswp-width={width}
+    data-pswp-height={height}
+    target="_blank"
+    rel="noopener"
+  >
+    <img
+      src={thumbSrc}
+      alt={title}
+      data-caption={description}
+      loading="lazy"
+      class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03] opacity-90 group-hover:opacity-100"
+    />
+
+    <!-- Hover caption overlay -->
+    <div class="
+      absolute inset-0
+      bg-gradient-to-t from-black/70 via-black/10 to-transparent
+      opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg
+      flex items-end p-4
+    ">
+      <p class="text-white text-xs font-medium leading-snug line-clamp-2 tracking-wide">{title}</p>
+    </div>
+  </a>
+</figure>

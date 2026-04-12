@@ -1,0 +1,50 @@
+---
+// GalleryGrid.astro
+// Wraps a PhotoSwipe-enabled masonry/CSS grid.
+// Usage: wrap <GalleryImage> components inside this.
+interface Props {
+  id?: string;
+}
+const { id = 'gallery' } = Astro.props;
+---
+
+<div id={id} class="gallery-grid columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+  <slot />
+</div>
+
+<!-- PhotoSwipe CSS -->
+<style is:global>
+  /* Import PhotoSwipe default styles (Vite processes this) */
+  @import 'photoswipe/style.css';
+
+  /* Ensure lightbox is above everything */
+  .pswp { z-index: 9999; }
+</style>
+
+<script>
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+
+  // Initialize once DOM is ready (runs after every navigation via View Transitions)
+  function initGallery() {
+    const galleryEl = document.querySelector('.gallery-grid');
+    if (!galleryEl) return;
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '.gallery-grid',
+      children: 'a.gallery-anchor',
+      pswpModule: () => import('photoswipe'),
+      // Show caption from data-caption attribute
+      captionContent: (slide) => {
+        return slide.data.element?.querySelector('img')?.getAttribute('data-caption') ?? '';
+      },
+    });
+
+    lightbox.init();
+  }
+
+  // Run on first load
+  initGallery();
+
+  // Re-run after Astro View Transitions navigate to a new page
+  document.addEventListener('astro:page-load', initGallery);
+</script>

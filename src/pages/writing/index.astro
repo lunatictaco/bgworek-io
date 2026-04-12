@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PublicationCard from '../../components/PublicationCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPubs = await getCollection('publications');
+const publications = allPubs.sort((a, b) => b.data.year - a.data.year);
+
+const byYear = publications.reduce((acc, pub) => {
+  const y = pub.data.year;
+  if (!acc[y]) acc[y] = [];
+  acc[y].push(pub);
+  return acc;
+}, {} as Record<number, typeof publications>);
+
+const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
+---
+
+<BaseLayout
+  title="Writing — Bryan Gworek"
+  description="Academic publications and research papers"
+>
+  <div class="max-w-3xl mx-auto px-8 md:px-6 pt-36 pb-32">
+
+    <!-- Page header -->
+    <header class="mb-16" id="writing-header">
+      <div class="page-divider">
+        <span class="pd-rule"></span>
+        <span class="pd-label">Publications</span>
+        <span class="pd-rule"></span>
+      </div>
+      <h1 class="font-bold text-neutral-200 text-4xl md:text-5xl tracking-tight">Writing</h1>
+      <p class="mt-4 text-neutral-400 text-base leading-relaxed max-w-prose">
+        Peer-reviewed publications and research communications.
+        <sup class="text-neutral-400">#</sup><span class="text-neutral-400 ml-1">denotes equal contribution.</span>
+      </p>
+    </header>
+
+    <!-- Publications grouped by year -->
+    <div id="publications-list" class="space-y-12">
+      {years.map(year => (
+        <section>
+          <h2 class="text-xs font-mono text-neutral-300 tracking-widest mb-1 uppercase">{year}</h2>
+          <div class="border-t border-white/5">
+            {byYear[year].map(pub => (
+              <PublicationCard
+                title={pub.data.title}
+                authors={pub.data.authors}
+                journal={pub.data.journal}
+                year={pub.data.year}
+                volume={pub.data.volume}
+                pages={pub.data.pages}
+                doi={pub.data.doi}
+                link={pub.data.link}
+                notes={pub.data.notes}
+                highlightAuthor={pub.data.highlight_author}
+              />
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script>
+  import { animate, inView } from 'motion';
+
+  animate('#writing-header', { opacity: [0, 1], y: [14, 0] }, { duration: 0.6, easing: 'ease-out' });
+
+  inView('.publication-card', (element) => {
+    animate(element, { opacity: [0, 1], x: [-10, 0] }, { duration: 0.5, easing: 'ease-out' });
+  }, { margin: '-40px 0px' });
+</script>

@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── IoskeleyMono font-face declarations ───────────────── */
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-Thin.woff2') format('woff2'); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-ThinItalic.woff2') format('woff2'); font-weight: 100; font-style: italic; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-ExtraLight.woff2') format('woff2'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-ExtraLightItalic.woff2') format('woff2'); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-LightItalic.woff2') format('woff2'); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-MediumItalic.woff2') format('woff2'); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-SemiBoldItalic.woff2') format('woff2'); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-BoldItalic.woff2') format('woff2'); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-ExtraBold.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-ExtraBoldItalic.woff2') format('woff2'); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-Black.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IoskeleyMono'; src: url('/fonts/IoskeleyMono-BlackItalic.woff2') format('woff2'); font-weight: 900; font-style: italic; font-display: swap; }
+
+@layer base {
+  :root {
+    /* RGB triplets — consumed by Tailwind's rgb(var(--color-x) / alpha) syntax */
+    --color-accent:       253 185 0;   /* #FDB900 Microsoft Yellow     */
+    --color-accent-light: 173 51 51;   /* #AD3333 Red-ish brown        */
+    --color-accent-dark:  61 219 217;   /* #9CEDEC Blizzard Blue */ 
+    --color-section:      255 131 137;   /* #FF8389 Wewak      */
+    --bg:    #0a0a0a;
+    --border: rgba(255, 255, 255, 0.07);
+  }
+
+  html { @apply scroll-smooth; scrollbar-gutter: stable; }
+
+  body { @apply bg-neutral-950 text-neutral-200 font-sans antialiased; }
+
+  ::selection {
+    background-color: rgb(var(--color-accent) / 0.2);
+    color: rgb(var(--color-accent));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Bare link style */
+  a:not([class]) {
+    color: rgb(var(--color-accent));
+    text-decoration-color: transparent;
+    transition: text-decoration-color 150ms;
+  }
+  a:not([class]):hover {
+    text-decoration-color: currentColor;
+  }
+}
+
+@layer components {
+  /* ── Section dividers on Home page (numbered) ──────────
+  ──────────────────────────────────────────────────────── */
+  .section-divider {
+    @apply flex items-center gap-5 mb-14;
+  }
+  .section-divider .section-num {
+    font-family: theme('fontFamily.mono');
+    font-size: 0.8rem;
+    color: rgb(var(--color-section));
+    user-select: none;
+    font-variant-numeric: tabular-nums;
+  }
+  .section-divider .section-rule {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(to right, rgb(var(--color-section)), rgb(var(--color-section) / 0.08));
+  }
+  .section-divider .section-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgb(var(--color-section));
+    opacity: 0.8;
+  }
+
+  /* ── Page-level header dividers (Writing / Visuals / Contact)
+     Symmetric rule, same yellow palette.
+  ──────────────────────────────────────────────────────── */
+  .page-divider {
+    @apply flex items-center gap-5 mb-8;
+  }
+  .page-divider .pd-rule {
+    height: 1px;
+    flex: 1;
+    background: rgb(var(--color-section) / 0.3);
+  }
+  .page-divider .pd-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgb(var(--color-section));
+    opacity: 0.8;
+  }
+
+  /* ── Nav scroll state ─────────────────────────────────── */
+  #site-nav {
+    transition: background 800ms ease, border-color 800ms ease, backdrop-filter 800ms ease;
+  }
+  #site-nav.nav-scrolled {
+    background: rgba(10, 10, 10, 0.90);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgb(var(--color-section) / 0.18);
+  }
+}
+
+@layer utilities {
+  .vt-name-nav { view-transition-name: nav; }
+}
+
+/* ── View Transitions ──────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-5px); }
+}
+
+::view-transition-old(root) { animation: 280ms ease-out fade-out; }
+::view-transition-new(root) { animation: 280ms ease-out fade-in; }
+::view-transition-old(nav),
+::view-transition-new(nav)  { animation: none; }
