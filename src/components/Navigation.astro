@@ -175,7 +175,14 @@ const isVisualsActive = pathname.startsWith('/visuals');
 </header>
 
 <script>
+  let navAbort: AbortController | null = null;
+
   function initNav() {
+    // Cancel all listeners from the previous init call
+    navAbort?.abort();
+    navAbort = new AbortController();
+    const { signal } = navAbort;
+
     // ── Scroll: darken nav when past top ──────────────
     const nav = document.getElementById('site-nav');
     const isHome = window.location.pathname === '/';
@@ -183,7 +190,7 @@ const isVisualsActive = pathname.startsWith('/visuals');
       nav?.classList.toggle('nav-scrolled', !isHome || window.scrollY > 60);
     }
     updateScrollState();
-    window.addEventListener('scroll', updateScrollState, { passive: true });
+    window.addEventListener('scroll', updateScrollState, { passive: true, signal });
 
     // ── Mobile: hamburger toggle ───────────────────────
     const toggle = document.getElementById('menu-toggle');
@@ -197,7 +204,7 @@ const isVisualsActive = pathname.startsWith('/visuals');
       iconOpen?.classList.toggle('hidden', nowOpen ?? false);
       iconClose?.classList.toggle('hidden', !nowOpen);
       toggle.setAttribute('aria-expanded', String(nowOpen));
-    });
+    }, { signal });
 
     // ── Mobile: Visuals sub-menu toggle ───────────────
     const visualsToggle = document.getElementById('mobile-visuals-toggle');
@@ -209,7 +216,7 @@ const isVisualsActive = pathname.startsWith('/visuals');
       visualsSub?.classList.toggle('hidden', !isHidden);
       visualsSub?.classList.toggle('flex', isHidden ?? false);
       visualsIcon?.classList.toggle('rotate-180', isHidden ?? false);
-    });
+    }, { signal });
 
     // Close mobile menu on nav link click
     menu?.querySelectorAll('a').forEach(link => {
@@ -218,10 +225,9 @@ const isVisualsActive = pathname.startsWith('/visuals');
         iconOpen?.classList.remove('hidden');
         iconClose?.classList.add('hidden');
         toggle?.setAttribute('aria-expanded', 'false');
-      });
+      }, { signal });
     });
   }
 
-  initNav();
   document.addEventListener('astro:page-load', initNav);
 </script>
