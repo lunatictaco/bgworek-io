@@ -24,23 +24,19 @@ const filmPreview = allVisuals
     <header class="mb-16" id="visuals-header">
       <div class="page-divider">
         <span class="pd-rule"></span>
-        <span class="pd-label">Gallery</span>
+        <span class="pd-label">Pick one!</span>
         <span class="pd-rule"></span>
       </div>
-      <h1 class="font-bold text-neutral-50 text-4xl md:text-5xl tracking-tight">Visuals</h1>
-      <p class="mt-4 text-neutral-200 text-base leading-relaxed max-w-prose">
-        Click to learn more about some art I like to make.
-      </p>
     </header>
 
     <!-- Category cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5" id="category-cards">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="category-cards">
 
       <!-- Scientific Work -->
       <a
         href="/visuals/scientific"
-        class="group block rounded-xl overflow-hidden border border-white/6 hover:border-accent/30
-               transition-all duration-300 hover:shadow-lg hover:shadow-accent/5"
+        class="group block rounded-xl overflow-hidden border border-white/10 hover:border-accent-blue/60
+               transition-all duration-300 hover:shadow-lg hover:shadow-accent-blue/5"
       >
         <div class="aspect-[4/3] overflow-hidden bg-neutral-900">
           {scientificPreview ? (
@@ -61,10 +57,10 @@ const filmPreview = allVisuals
         <div class="p-5 bg-neutral-400">
           <div class="flex items-center justify-between">
             <div>
-              <h2 class="text-neutral-100 font-medium group-hover:text-accent transition-colors">
+              <h2 class="text-neutral-100 font-medium group-hover:text-accent-blue transition-colors">
                 Scientific Work
               </h2>
-              <p class="text-xs text-neutral-600 mt-1">Microscopy &amp; lab imagery</p>
+              <p class="text-xs text-neutral-600 mt-1">Microscopy &amp; Renderings</p>
             </div>
             <span class="text-xs font-mono text-neutral-700">{String(scientificCount).padStart(2, '0')}</span>
           </div>
@@ -74,8 +70,8 @@ const filmPreview = allVisuals
       <!-- Film Photography -->
       <a
         href="/visuals/film"
-        class="group block rounded-xl overflow-hidden border border-white/6 hover:border-accent/30
-               transition-all duration-300 hover:shadow-lg hover:shadow-accent/5"
+        class="group block rounded-xl overflow-hidden border border-white/10 hover:border-accent-blue/60
+               transition-all duration-300 hover:shadow-lg hover:shadow-accent-blue/5"
       >
         <div class="aspect-[4/3] overflow-hidden bg-neutral-950">
           {filmPreview ? (
@@ -98,10 +94,10 @@ const filmPreview = allVisuals
         <div class="p-5 bg-neutral-800">
           <div class="flex items-center justify-between">
             <div>
-              <h2 class="text-neutral-100 font-medium group-hover:text-accent transition-colors">
+              <h2 class="text-neutral-100 font-medium group-hover:text-accent-blue transition-colors">
                 Film Photography
               </h2>
-              <p class="text-xs text-neutral-600 mt-1">Shot on analog film</p>
+              <p class="text-xs text-neutral-600 mt-1">Fun art with analog film</p>
             </div>
             <span class="text-xs font-mono text-neutral-300">{String(filmCount).padStart(2, '0')}</span>
           </div>

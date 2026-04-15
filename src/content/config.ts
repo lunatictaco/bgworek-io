@@ -30,6 +30,7 @@ const visuals = defineCollection({
     height: z.number().optional(),    // original image height (for PhotoSwipe)
     date: z.string().optional(),
     order: z.number().default(0),     // manual sort order within category
+    subsection: z.string().optional(), // optional grouping label, e.g. "Confocal" or "35mm"
   }),
 });
 

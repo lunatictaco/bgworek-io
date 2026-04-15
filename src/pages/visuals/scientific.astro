@@ -8,6 +8,26 @@ const allVisuals = await getCollection('visuals');
 const images = allVisuals
   .filter(v => v.data.category === 'scientific')
   .sort((a, b) => a.data.order - b.data.order);
+
+// ── Subsections ────────────────────────────────────────────────────────────────
+// Add, remove, or reorder entries here to control which sections appear and
+// in what order. The `name` must match the `subsection` field in your JSON files.
+// Images with no `subsection` field will appear above all named sections.
+const sections: { name: string; description: string }[] = [
+  {
+    name: 'Concepts and Ideas',
+    description: 'All work seen here uses Blender + Molecular Nodes',
+  },
+];
+
+// Group images by subsection key
+const bySection = new Map<string, typeof images>();
+for (const img of images) {
+  const key = img.data.subsection ?? '';
+  if (!bySection.has(key)) bySection.set(key, []);
+  bySection.get(key)!.push(img);
+}
+const ungrouped = bySection.get('') ?? [];
 ---
 
 <BaseLayout title="Scientific Work — Bryan Gworek" description="Scientific imagery and microscopy from the lab.">
@@ -23,29 +43,55 @@ const images = allVisuals
     <header class="mb-12" id="sci-header">
       <div class="page-divider">
         <span class="pd-rule"></span>
-        <span class="pd-label">Scientific Work</span>
+        <span class="pd-label">“Don't try to be original, just try to be good” - Paul Rand</span>
         <span class="pd-rule"></span>
       </div>
-      <h1 class="font-bold text-neutral-50 text-3xl md:text-4xl tracking-tight">Scientific Work</h1>
-      <p class="mt-3 text-neutral-500 text-sm max-w-prose">
-        Microscopy, experimental imagery, and visual outputs from the lab.
-        Click any image for a full-screen view and description.
-      </p>
     </header>
 
     {images.length > 0 ? (
-      <GalleryGrid id="scientific-gallery">
-        {images.map(img => (
-          <GalleryImage
-            src={img.data.image}
-            thumbnail={img.data.thumbnail}
-            title={img.data.title}
-            description={img.data.description}
-            width={img.data.width}
-            height={img.data.height}
-          />
-        ))}
-      </GalleryGrid>
+      <>
+        {/* Images with no subsection appear first, ungrouped */}
+        {ungrouped.length > 0 && (
+          <GalleryGrid id="scientific-gallery-main">
+            {ungrouped.map(img => (
+              <GalleryImage
+                src={img.data.image}
+                thumbnail={img.data.thumbnail}
+                title={img.data.title}
+                description={img.data.description}
+                width={img.data.width}
+                height={img.data.height}
+              />
+            ))}
+          </GalleryGrid>
+        )}
+
+        {/* Named subsections */}
+        {sections.map((section, i) => {
+          const sectionImages = bySection.get(section.name) ?? [];
+          if (sectionImages.length === 0) return null;
+          return (
+            <section class={ungrouped.length > 0 || i > 0 ? 'mt-20' : ''}>
+              <div class="mb-8">
+                <h2 class="text-lg font-semibold text-neutral-200 tracking-tight">{section.name}</h2>
+                <p class="mt-1 text-sm text-neutral-500 max-w-prose">{section.description}</p>
+              </div>
+              <GalleryGrid id={`scientific-gallery-${i}`}>
+                {sectionImages.map(img => (
+                  <GalleryImage
+                    src={img.data.image}
+                    thumbnail={img.data.thumbnail}
+                    title={img.data.title}
+                    description={img.data.description}
+                    width={img.data.width}
+                    height={img.data.height}
+                  />
+                ))}
+              </GalleryGrid>
+            </section>
+          );
+        })}
+      </>
     ) : (
       <div class="text-center py-28 text-neutral-600">
         <svg class="w-10 h-10 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">

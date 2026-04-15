@@ -90,21 +90,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <!-- Quick-links row -->
       <div class="flex flex-wrap gap-5 mt-10">
-        <a href="/writing" class="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-accent transition-colors group">
+        <a href="/writing" class="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-accent-blue transition-colors group">
           <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
           Publications
         </a>
-        <a href="/visuals" class="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-accent transition-colors group">
+        <a href="/visuals" class="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-accent-blue transition-colors group">
           <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14" />
           </svg>
           Visuals
         </a>
-        <a href="/contact" class="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-accent transition-colors group">
+        <a href="/contact" class="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-accent-blue transition-colors group">
           <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
@@ -167,7 +167,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           { label: 'Minimal In-Cell Modeling',       desc: 'Atomstic Cytoplasm Remodeling' },
           { label: 'Small-Molecule Drug Kinetics',       desc: 'Effects of solvation and vdW dynamics' },
         ].map(item => (
-          <li class="flex gap-3 p-4 rounded-lg bg-neutral-900 border border-white/5 hover:border-accent/20 transition-colors">
+          <li class="flex gap-3 p-4 rounded-lg bg-neutral-900 border border-white/5 hover:border-accent-blue/25 transition-colors">
             <span class="text-accent mt-0.5 text-xs leading-5">▸</span>
             <div>
               <p class="text-neutral-200 text-sm font-medium">{item.label}</p>
@@ -232,7 +232,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             ].map(item => (
               <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs
                             bg-neutral-900 border border-white/6
-                            hover:border-accent/60 transition-colors cursor-default">
+                            hover:border-accent-blue/50 transition-colors cursor-default">
                 <span class="text-section">{item.lang}</span>
                 <span class="text-neutral-300">{item.level}</span>
               </span>

@@ -1,9 +1,0 @@
-{
-  "title": "Example Film Photo",
-  "description": "Replace this entry with your film photography. Add the image to public/images/film/ and update this file.",
-  "category": "film",
-  "image": "/images/film/placeholder.svg",
-  "width": 800,
-  "height": 1000,
-  "order": 1
-}

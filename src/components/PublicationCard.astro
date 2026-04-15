@@ -20,7 +20,7 @@ function highlightAuthors(authorStr: string, highlight?: string): string {
   const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return authorStr.replace(
     new RegExp(`(${escaped}[#]?)`, 'g'),
-    '<strong class="text-accent font-semibold">$1</strong>'
+    '<strong class="text-accent-blue font-semibold">$1</strong>'
   );
 }
 

@@ -42,6 +42,15 @@ const { id = 'gallery' } = Astro.props;
     lightbox.init();
   }
 
+  // Prevent right-click context menu anywhere inside a gallery grid.
+  // Using the document so it works for multiple grids on the same page
+  // and persists across View Transitions without duplicating listeners.
+  document.addEventListener('contextmenu', (e) => {
+    if ((e.target as Element).closest('.gallery-grid')) {
+      e.preventDefault();
+    }
+  });
+
   // Run on first load
   initGallery();
 
