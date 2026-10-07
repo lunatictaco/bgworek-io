@@ -40,24 +40,26 @@ const ungrouped = bySection.get('') ?? [];
 ---
 
 <BaseLayout title="Film Photography — Bryan Gworek" description="Photographs shot on analog film.">
-  <div class="max-w-5xl mx-auto px-8 md:px-6 pt-36 pb-32">
+  <div class="max-w-6xl mx-auto px-8 md:px-6 pt-36 pb-32">
 
     <!-- Breadcrumb -->
-    <nav class="mb-10 flex items-center gap-2 text-xs text-neutral-600" aria-label="Breadcrumb">
+    <nav class="mb-10 flex items-center gap-2 text-xs text-ink-faint" aria-label="Breadcrumb">
       <a href="/visuals" class="hover:text-accent transition-colors">Visuals</a>
-      <span class="text-neutral-700">/</span>
-      <span class="text-neutral-400">Film Photography</span>
+      <span class="text-ink-faint">/</span>
+      <span class="text-ink-muted">Film Photography</span>
     </nav>
 
-    <header class="mb-12" id="film-header">
+    <header class="mb-16 reveal is-in" id="film-header">
       <div class="page-divider">
         <span class="pd-rule"></span>
-        <span class="pd-label">Film</span>
+        <span class="pd-label">Analog photography</span>
         <span class="pd-rule"></span>
       </div>
       <!-- Film Toolkit -->
         <div>
-          <h3 class="text-neutral-100 font-semibold text-sm mb-4">Film Toolkit</h3>
+          <h1 class="font-display font-bold text-ink text-6xl md:text-7xl leading-[0.95] tracking-tight mb-4">Film</h1>
+          <p class="text-ink-muted leading-relaxed max-w-prose mb-10">Photographs shot on restored medium-format folders and 35mm bodies, newest trips first.</p>
+          <h2 class="eyebrow mb-4">Film toolkit</h2>
           <dl class="space-y-2.5">
             {[
               { label: 'Restored Cameras',          value: 'Zeiss Ikon Super Ikonta 530/2 (I have 3 variants of these for some reason), Voigtländer Bessa 66 Folder, Kodak Brownie No. 2/3, Nikon F2, and many more...' },
@@ -65,9 +67,9 @@ const ungrouped = bySection.get('') ?? [];
               { label: 'Lenses',        value: 'Mamiya-Sekor 100mm ƒ/3.5, Vivitar 35-85mm ƒ/2.8, Olympus D-Zuiko 35mm ƒ/2.8, Olympus OM Zukio 28mm ƒ/2.8, Zeiss Tessar 10.5cm ƒ/3.8, Voigtar 75mm ƒ/3.5' },
               { label: 'Film',value: 'Cinestill 800T, Kodak Ektachrome E100, Kodak Porta 400, Kodak Portra 100, Kodak Ektar 100, Ilford FP4 Plus, Ilford HP5+ 400, Ilford Delta 100, Fuji Pro 400H' },
             ].map(row => (
-              <div class="grid grid-cols-[13rem_1fr] gap-3 text-sm">
-                <dt class="text-accent/100 font-medium shrink-0">{row.label}</dt>
-                <dd class="text-neutral-300">{row.value}</dd>
+              <div class="grid grid-cols-1 sm:grid-cols-[13rem_1fr] gap-1 sm:gap-3 text-sm">
+                <dt class="text-accent font-medium shrink-0">{row.label}</dt>
+                <dd class="text-ink-muted">{row.value}</dd>
               </div>
             ))}
           </dl>
@@ -98,9 +100,9 @@ const ungrouped = bySection.get('') ?? [];
           if (sectionImages.length === 0) return null;
           return (
             <section class={ungrouped.length > 0 || i > 0 ? 'mt-20' : ''}>
-              <div class="mb-8">
-                <h2 class="text-lg font-semibold text-neutral-200 tracking-tight">{section.name}</h2>
-                {section.description && <p class="mt-1 text-sm text-neutral-500 max-w-prose">{section.description}</p>}
+              <div class="mb-8 reveal">
+                <h2 class="text-lg font-semibold text-ink tracking-tight">{section.name}</h2>
+                {section.description && <p class="mt-1 text-sm text-ink-faint max-w-prose">{section.description}</p>}
               </div>
               <GalleryGrid id={`film-gallery-${i}`}>
                 {sectionImages.map(img => (
@@ -119,23 +121,18 @@ const ungrouped = bySection.get('') ?? [];
         })}
       </>
     ) : (
-      <div class="text-center py-28 text-neutral-600">
+      <div class="text-center py-28 text-ink-faint">
         <svg class="w-10 h-10 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"
             d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"
             d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
         </svg>
-        <p class="text-neutral-500 font-medium">No photos yet</p>
-        <p class="text-sm mt-2 text-neutral-700">
-          Add images to <code class="bg-neutral-900 px-1.5 py-0.5 rounded text-xs">public/images/film/</code>
+        <p class="text-ink-faint font-medium">No photos yet</p>
+        <p class="text-sm mt-2 text-ink-faint">
+          Add images to <code class="bg-surface-raised px-1.5 py-0.5 rounded text-xs">public/images/film/</code>
         </p>
       </div>
     )}
   </div>
 </BaseLayout>
-
-<script>
-  import { animate } from 'motion';
-  animate('#film-header', { opacity: [0, 1], y: [10, 0] }, { duration: 0.5, easing: 'ease-out' });
-</script>

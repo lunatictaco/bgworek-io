@@ -12,7 +12,7 @@ const { src, title, description, width = 800, height = 600, thumbnail } = Astro.
 const thumbSrc = thumbnail ?? src;
 ---
 
-<figure class="gallery-item break-inside-avoid overflow-hidden rounded-lg group relative cursor-pointer" style={`aspect-ratio: ${width} / ${height}`}>
+<figure class="gallery-item reveal break-inside-avoid overflow-hidden rounded-lg group relative cursor-zoom-in bg-surface-raised" style={`aspect-ratio: ${width} / ${height}`}>
   <a
     class="gallery-anchor block overflow-hidden rounded-lg"
     href={src}
@@ -29,20 +29,22 @@ const thumbSrc = thumbnail ?? src;
       data-caption={description}
       loading="lazy"
       draggable="false"
-      class="w-full h-auto transition-transform duration-500 group-hover:scale-[1.03] opacity-90 group-hover:opacity-100 select-none"
+      class="w-full h-auto transition-transform duration-500 group-hover:scale-[1.03] select-none"
     />
 
     <!-- Image protection overlay: blocks drag and removes "Save Image As" from right-click -->
     <div class="image-shield absolute inset-0 z-[1]" aria-hidden="true"></div>
 
-    <!-- Hover caption overlay -->
-    <div class="z-[2]
-      absolute inset-0
-      bg-gradient-to-t from-black/70 via-black/10 to-transparent
-      opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg
-      flex items-end p-4
-    ">
-      <p class="text-white text-xs font-medium leading-snug line-clamp-2 tracking-wide">{title}</p>
-    </div>
+    <!-- Hover caption chip (scrim + ink, replaces the old black gradient).
+         Skipped when there's no description: film titles are frame numbers. -->
+    {description && <div
+      class="z-[2] absolute left-2 right-2 bottom-2 px-3 py-2.5 rounded-md
+             text-ink text-xs font-medium leading-snug tracking-wide
+             opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0
+             transition-all duration-300"
+      style="background: var(--scrim)"
+    >
+      <p class="line-clamp-2">{title}</p>
+    </div>}
   </a>
 </figure>

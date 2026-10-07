@@ -17,26 +17,60 @@ const { id = 'gallery' } = Astro.props;
   /* Import PhotoSwipe default styles (Vite processes this) */
   @import 'photoswipe/style.css';
 
-  /* Ensure lightbox is above everything */
-  .pswp { z-index: 9999; }
+  /* Ensure lightbox is above everything; deep-forest backdrop instead of black */
+  .pswp {
+    z-index: 9999;
+    --pswp-bg: #203a1e;
+    --pswp-placeholder-bg: #264424;
+    --pswp-icon-color: #fff1ca;
+    --pswp-icon-color-secondary: #2d4f2b;
+    --pswp-icon-stroke-color: #2d4f2b;
+  }
+  .pswp__custom-caption {
+    position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%);
+    max-width: min(640px, calc(100% - 32px));
+    padding: 10px 14px; border-radius: 8px;
+    background: rgba(32, 58, 30, 0.88); color: #fff1ca;
+    font-size: 12px; line-height: 18px; letter-spacing: 0.02em; text-align: center;
+  }
+  .pswp__custom-caption:empty { display: none; }
 </style>
 
 <script>
   import PhotoSwipeLightbox from 'photoswipe/lightbox';
 
+  let lightbox: PhotoSwipeLightbox | null = null;
+
   // Initialize once DOM is ready (runs after every navigation via View Transitions)
   function initGallery() {
+    lightbox?.destroy();
+    lightbox = null;
+
     const galleryEl = document.querySelector('.gallery-grid');
     if (!galleryEl) return;
 
-    const lightbox = new PhotoSwipeLightbox({
+    lightbox = new PhotoSwipeLightbox({
       gallery: '.gallery-grid',
       children: 'a.gallery-anchor',
       pswpModule: () => import('photoswipe'),
-      // Show caption from data-caption attribute
-      captionContent: (slide) => {
-        return slide.data.element?.querySelector('img')?.getAttribute('data-caption') ?? '';
-      },
+    });
+
+    // Caption chip: "Title — description". Only shown when there is a
+    // description (film titles are frame numbers, so they stay uncaptioned).
+    lightbox.on('uiRegister', () => {
+      lightbox?.pswp?.ui?.registerElement({
+        name: 'custom-caption',
+        order: 9,
+        isButton: false,
+        appendTo: 'root',
+        html: '',
+        onInit: (el, pswp) => {
+          pswp.on('change', () => {
+            const img = pswp.currSlide?.data.element?.querySelector('img');
+            el.textContent = img?.dataset.caption ? `${img.alt} — ${img.dataset.caption}` : '';
+          });
+        },
+      });
     });
 
     lightbox.init();
@@ -51,9 +85,6 @@ const { id = 'gallery' } = Astro.props;
     }
   });
 
-  // Run on first load
-  initGallery();
-
-  // Re-run after Astro View Transitions navigate to a new page
+  // astro:page-load fires on first load and after every View Transitions navigation
   document.addEventListener('astro:page-load', initGallery);
 </script>

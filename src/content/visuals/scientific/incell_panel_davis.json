@@ -1,0 +1,11 @@
+{
+  "title": "In-cell protein panel",
+  "description": "Crowded cytoplasm, illustrated in flat color",
+  "category": "scientific",
+  "image": "/images/scientific/incell_panel_davis.webp",
+  "thumbnail": "/images/scientific/thumbs/incell_panel_davis.webp",
+  "width": 1920,
+  "height": 1920,
+  "order": 4,
+  "subsection": "Concepts and Ideas"
+}

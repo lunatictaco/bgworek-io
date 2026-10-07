@@ -9,7 +9,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="max-w-3xl mx-auto px-8 md:px-6 pt-36 pb-32">
 
     <!-- ── Headshot + intro row ──────────────────────── -->
-    <div id="contact-intro" class="flex flex-col sm:flex-row gap-8 items-start mb-16">
+    <div id="contact-intro" class="reveal is-in flex flex-col sm:flex-row gap-8 items-start mb-16">
       <!-- Headshot -->
       <div class="flex-shrink-0">
         <img
@@ -17,16 +17,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           alt="Bryan Gworek Heatshot"
           width="500"
           height="500"
-          class="rounded-xl object-cover w-36 sm:w-40 grayscale hover:grayscale-0 transition-all duration-500 shadow-lg shadow-black/40"
+          class="rounded-xl object-cover w-36 sm:w-40 border border-line"
         />
       </div>
 
       <!-- Name + intro text -->
       <div class="pt-1">
-        <h1 class="font-bold text-neutral-50 text-3xl md:text-4xl tracking-tight leading-tight">
+        <h1 class="font-bold text-ink text-3xl md:text-4xl tracking-tight leading-tight">
           Contact me &#x1f6ce;
         </h1>
-        <p class="mt-3 text-neutral-400 leading-relaxed text-base max-w-sm">
+        <p class="mt-3 text-ink-muted leading-relaxed text-base max-w-sm">
           Please email or fill out the form to discuss my work or future collaborations.
         </p>
         <!-- Email -->
@@ -35,7 +35,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          <span class="text-neutral-200 font-medium select-all tracking-wide">
+          <span class="text-ink font-medium select-all tracking-wide">
             bgworek2 [at] illinois.edu
           </span>
         </div>
@@ -49,15 +49,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
 
     <!-- ── External links ───────────────────────────────── -->
-    <div id="contact-links" class="flex flex-wrap gap-3 mb-16">
+    <div id="contact-links" class="reveal flex flex-wrap gap-3 mb-16">
      
       <a href="https://www.linkedin.com/in/bryangworek/" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/8 text-sm text-neutral-400 hover:text-accent-blue hover:border-accent-blue/30 transition-all">
+         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-line-strong/60 text-sm text-ink-muted hover:text-accent hover:border-accent transition-all">
         Linkedin
       </a> 
       
       <a href="https://github.com/lunatictaco" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/8 text-sm text-neutral-400 hover:text-accent-blue hover:border-accent-blue/30 transition-all">
+         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-line-strong/60 text-sm text-ink-muted hover:text-accent hover:border-accent transition-all">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
         </svg>
@@ -65,7 +65,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </a>
 
       <a href="https://scholar.google.com/citations?user=YKTtSDwAAAAJ&hl" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/8 text-sm text-neutral-400 hover:text-accent-blue hover:border-accent-blue/30 transition-all">
+         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-line-strong/60 text-sm text-ink-muted hover:text-accent hover:border-accent transition-all">
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 24a7 7 0 110-14 7 7 0 010 14zm0-24L0 9.5l4.838 3.94A8 8 0 0112 9a8 8 0 017.162 4.44L24 9.5z"/>
         </svg>
@@ -73,7 +73,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </a>
 
       <a href="https://orcid.org/0000-0001-7182-1808" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-white/8 text-sm text-neutral-400 hover:text-accent-blue hover:border-accent-blue/30 transition-all">
+         class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-line-strong/60 text-sm text-ink-muted hover:text-accent hover:border-accent transition-all">
         ORCID
       </a>
 
@@ -91,7 +91,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       method="POST"
       data-netlify="true"
       netlify-honeypot="bot-field"
-      class="space-y-6"
+      class="space-y-6 reveal"
       id="contact-form"
     >
       <input type="hidden" name="form-name" value="contact" />
@@ -100,34 +100,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <!-- Name -->
         <div>
-          <label for="name" class="block text-xs tracking-wider uppercase text-neutral-500 mb-2">Name</label>
+          <label for="name" class="block text-xs tracking-wider uppercase text-ink-faint mb-2">Name</label>
           <input
             type="text" id="name" name="name" required autocomplete="name"
             placeholder="Your name"
-            class="w-full px-4 py-3 rounded-lg bg-neutral-900 border border-white/8 text-sm text-neutral-200
-                   placeholder-neutral-600 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/30 transition"
+            class="field"
           />
         </div>
         <!-- Email -->
         <div>
-          <label for="email" class="block text-xs tracking-wider uppercase text-neutral-500 mb-2">Email</label>
+          <label for="email" class="block text-xs tracking-wider uppercase text-ink-faint mb-2">Email</label>
           <input
             type="email" id="email" name="email" required autocomplete="email"
             placeholder="you@example.com"
-            class="w-full px-4 py-3 rounded-lg bg-neutral-900 border border-white/8 text-sm text-neutral-200
-                   placeholder-neutral-600 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/30 transition"
+            class="field"
           />
         </div>
       </div>
 
       <!-- Message -->
       <div>
-        <label for="message" class="block text-xs tracking-wider uppercase text-neutral-500 mb-2">Message</label>
+        <label for="message" class="block text-xs tracking-wider uppercase text-ink-faint mb-2">Message</label>
         <textarea
           id="message" name="message" required rows={5}
           placeholder="Explain yourself here"
-          class="w-full px-4 py-3 rounded-lg bg-neutral-900 border border-white/8 text-sm text-neutral-200
-                 placeholder-neutral-600 focus:outline-none focus:border-accent/50 focus:ring-1 focus:ring-accent/30 transition resize-none"
+          class="field resize-none"
         ></textarea>
       </div>
 
@@ -135,10 +132,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div>
         <button
           type="submit"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-accent/10 border border-accent/25
-                 text-accent text-sm font-medium rounded-lg
-                 hover:bg-accent/20 hover:border-accent/40 transition-all duration-200
-                 focus:outline-none focus:ring-2 focus:ring-accent/50 focus:ring-offset-2 focus:ring-offset-neutral-950"
+          class="btn btn-primary"
         >
           Send message
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +144,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </form>
 
     <!-- Success -->
-    <div id="form-success" class="hidden mt-8 p-5 bg-accent/5 border border-accent/20 rounded-xl text-accent text-sm">
+    <div id="form-success" class="hidden mt-8 p-5 bg-surface-raised border border-accent rounded-xl text-accent text-sm">
       I'll get back to you soon!
     </div>
 
@@ -158,12 +152,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <script>
-  import { animate } from 'motion';
-
-  animate('#contact-intro',      { opacity: [0, 1], y: [16, 0] }, { duration: 0.6, delay: 0.1, easing: 'ease-out' });
-  animate('#contact-links',      { opacity: [0, 1] },              { duration: 0.5, delay: 0.3, easing: 'ease-out' });
-  animate('#contact-form',       { opacity: [0, 1], y: [10, 0] }, { duration: 0.5, delay: 0.4, easing: 'ease-out' });
-
   const form    = document.getElementById('contact-form') as HTMLFormElement | null;
   const success = document.getElementById('form-success');
 

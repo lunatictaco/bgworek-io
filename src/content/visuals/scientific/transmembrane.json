@@ -1,0 +1,11 @@
+{
+  "title": "Transmembrane helices",
+  "description": "Helical dimer spanning a lipid bilayer",
+  "category": "scientific",
+  "image": "/images/scientific/transmembrane.webp",
+  "thumbnail": "/images/scientific/thumbs/transmembrane.webp",
+  "width": 3200,
+  "height": 2200,
+  "order": 1,
+  "subsection": "Concepts and Ideas"
+}

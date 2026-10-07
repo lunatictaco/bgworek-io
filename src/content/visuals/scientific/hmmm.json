@@ -1,0 +1,11 @@
+{
+  "title": "Membrane cavity",
+  "description": "A glassy solvent pocket through the bilayer core",
+  "category": "scientific",
+  "image": "/images/scientific/hmmm.webp",
+  "thumbnail": "/images/scientific/thumbs/hmmm.webp",
+  "width": 3200,
+  "height": 2200,
+  "order": 7,
+  "subsection": "Concepts and Ideas"
+}

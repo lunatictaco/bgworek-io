@@ -20,14 +20,14 @@ function highlightAuthors(authorStr: string, highlight?: string): string {
   const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return authorStr.replace(
     new RegExp(`(${escaped}[#]?)`, 'g'),
-    '<strong class="text-accent-blue font-semibold">$1</strong>'
+    '<strong class="text-accent font-semibold">$1</strong>'
   );
 }
 
 const formattedAuthors = highlightAuthors(authors, highlightAuthor);
 ---
 
-<article class="publication-card group py-7 border-b border-white/6 last:border-0">
+<article class="publication-card group py-7 border-b border-line last:border-0">
   <div class="space-y-2.5">
     <!-- Title -->
     {link ? (
@@ -35,7 +35,7 @@ const formattedAuthors = highlightAuthors(authors, highlightAuthor);
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        class="block font-medium text-neutral-200 text-base leading-snug hover:text-accent transition-colors"
+        class="block font-medium text-ink text-base leading-snug hover:text-accent transition-colors"
       >
         {title}
         <svg
@@ -47,19 +47,19 @@ const formattedAuthors = highlightAuthors(authors, highlightAuthor);
         </svg>
       </a>
     ) : (
-      <p class="font-medium text-neutral-100 text-base leading-snug">{title}</p>
+      <p class="font-medium text-ink text-base leading-snug">{title}</p>
     )}
 
     <!-- Authors -->
-    <p class="text-sm text-neutral-400 leading-relaxed" set:html={formattedAuthors} />
+    <p class="text-sm text-ink-muted leading-relaxed" set:html={formattedAuthors} />
 
     <!-- Journal / Year -->
-    <p class="text-sm text-neutral-300">
-      <em class="not-italic text-neutral-300">{journal}</em>
-      {volume && <span class="text-neutral-400">,&nbsp;{volume}</span>}
-      {pages && <span class="text-neutral-400">:{pages}</span>}
-      <span class="mx-2 text-neutral-400">·</span>
-      <span class="text-neutral-400">{year}</span>
+    <p class="text-sm text-ink-muted">
+      <em class="not-italic text-ink">{journal}</em>
+      {volume && <span>,&nbsp;{volume}</span>}
+      {pages && <span>:{pages}</span>}
+      <span class="mx-2 text-ink-faint">·</span>
+      <span>{year}</span>
     </p>
 
     <!-- DOI + notes -->
@@ -69,13 +69,13 @@ const formattedAuthors = highlightAuthors(authors, highlightAuthor);
           href={link || `https://doi.org/${doi}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="font-mono text-neutral-400 hover:text-accent transition-colors"
+          class="font-mono text-ink-faint hover:text-accent transition-colors"
         >
           doi:{doi}
         </a>
       )}
       {notes && (
-        <span class="text-neutral-600 italic">{notes}</span>
+        <span class="text-ink-faint italic">{notes}</span>
       )}
     </div>
   </div>

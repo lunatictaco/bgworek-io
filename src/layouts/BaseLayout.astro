@@ -42,19 +42,77 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <ViewTransitions />
     <title>{title}</title>
+
+    <!-- Opt into scroll reveals before first paint; skipped for reduced motion -->
+    <script is:inline>
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('has-motion');
+        // Safety net: if the motion script never runs, show everything.
+        setTimeout(function () {
+          if (!window.__motionReady) document.documentElement.classList.remove('has-motion');
+        }, 3000);
+      }
+    </script>
   </head>
 
-  <body class="min-h-screen flex flex-col bg-neutral-950 text-neutral-200">
+  <body class="min-h-screen flex flex-col bg-surface text-ink">
     <Navigation />
 
     <main id="main-content" class="flex-1" transition:animate="fade">
       <slot />
     </main>
 
-    <footer class="border-t border-white/6 py-8 mt-24">
-      <div class="max-w-5xl mx-auto px-6 text-xs text-neutral-600 flex items-center justify-between flex-wrap gap-2 tracking-wide">
+    <footer class="border-t border-line py-8 mt-24">
+      <div class="max-w-6xl mx-auto px-6 text-xs text-ink-faint flex items-center justify-between flex-wrap gap-2 tracking-wide">
         <span>© {new Date().getFullYear()} Bryan Gworek</span>
+        <span class="flex gap-4">
+          <a href="/contact" class="hover:text-accent transition-colors">Contact</a>
+          <a href="https://scholar.google.com/citations?user=YKTtSDwAAAAJ&hl" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">Scholar</a>
+          <a href="https://github.com/lunatictaco" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">GitHub</a>
+        </span>
       </div>
     </footer>
   </body>
 </html>
+
+<script>
+  // Shared subtle motion: scroll reveals (.reveal → .is-in) and the
+  // pointer-following glow inside artwork plates. Re-runs after every
+  // View Transitions navigation.
+  const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let observer: IntersectionObserver | null = null;
+
+  function initMotion() {
+    (window as Window & { __motionReady?: boolean }).__motionReady = true;
+    observer?.disconnect();
+    if (reduced()) {
+      document.documentElement.classList.remove('has-motion');
+      return;
+    }
+    document.documentElement.classList.add('has-motion');
+
+    observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add('is-in');
+        observer?.unobserve(entry.target);
+      }
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal:not(.is-in)').forEach((el) => observer!.observe(el));
+
+    document.querySelectorAll<HTMLElement>('.plate-frame').forEach((frame) => {
+      frame.addEventListener('pointermove', (e) => {
+        const r = frame.getBoundingClientRect();
+        frame.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        frame.style.setProperty('--my', `${e.clientY - r.top}px`);
+      });
+    });
+  }
+
+  // The swapped-in <html> loses the class; restore it before paint.
+  document.addEventListener('astro:after-swap', () => {
+    if (!reduced()) document.documentElement.classList.add('has-motion');
+  });
+  document.addEventListener('astro:page-load', initMotion);
+</script>

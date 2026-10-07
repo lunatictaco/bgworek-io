@@ -1,0 +1,256 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About — Bryan Gworek"
+  description="Bryan Gworek: Biophysics and Quantitative Biology PhD student at UIUC. Research, education, methods and skills."
+>
+  <div class="max-w-3xl mx-auto px-8 md:px-6 pt-36 pb-16">
+
+    <!-- ── Header: headshot + title ─────────────────── -->
+    <header class="reveal is-in flex flex-col sm:flex-row gap-8 items-start sm:items-end">
+      <img
+        src="/images/headshot.jpg"
+        alt="Bryan Gworek headshot"
+        width="500"
+        height="500"
+        class="rounded-xl object-cover w-36 sm:w-40 border border-line"
+      />
+      <div>
+        <p class="eyebrow mb-4">Biophysics · Champaign, IL</p>
+        <h1 class="font-display font-bold text-ink text-6xl md:text-7xl leading-[0.95] tracking-tight">About</h1>
+      </div>
+    </header>
+
+<!-- ── 01 About ──────────────────────────────────── -->
+    <section id="section-about" class="pt-16 scroll-mt-24">
+      <div class="section-divider reveal">
+        <span class="section-num">01</span>
+        <span class="section-rule"></span>
+        <span class="section-label">About</span>
+      </div>
+
+      <div class="space-y-5 text-ink leading-relaxed text-base max-w-prose">
+        <p>
+          Greetings! I am a Biophysics and Quantitative Biology Doctoral student at the <strong>University of Illinois
+          Urbana-Champaign</strong>, working under Dr. Kai Zhang and Dr. Taras Pogorelov.
+        </p>
+        <p>
+          My research focuses on cell signaling and protein/membrane dynamics, with an emphasis on phosphoinositides — a class of signaling lipids critical for membrane-protein interactions.
+          These interactions drive key cellular processes, including proliferation, maturation, and development.
+        </p>
+        <p>
+          I work with two key protein systems: <strong>Arc (activity-regulated cytoskeleton-associated protein)</strong>, a peripheral protein that forms viral-like capsids to encapsulate mRNA in neurons,
+          and <strong>receptor tyrosine kinases (RTKs)</strong> such as FGFR3 and TrkA, which are central regulators of the same cellular functions governed by phosphoinositide signaling.
+        </p>
+        <p>
+          As a Biophysics doctoral researcher co-advised across computational and experimental laboratories,
+          my goal is to bridge theory and experiment by using computational modeling to generate hypotheses and experimental techniques to validate them (and <i>vise versa</i>)!
+          This dual approach allows me to investigate biological phenomena with a rigor and perspective that neither discipline offers alone.
+        </p>
+        <p>
+          In addition to my academic work, I enjoy designing and creating graphics for scientific publications, and film photography as a side hobby.
+          You can find my various efforts linked below. Enjoy!
+        </p>
+      </div>
+
+      <!-- Quick-links row -->
+      <div class="flex flex-wrap gap-5 mt-10">
+        <a href="/writing" class="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-accent transition-colors group">
+          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Publications
+        </a>
+        <a href="/visuals" class="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-accent transition-colors group">
+          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14" />
+          </svg>
+          Visuals
+        </a>
+        <a href="/contact" class="inline-flex items-center gap-2 text-sm text-ink-muted hover:text-accent transition-colors group">
+          <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8" />
+          </svg>
+          Get in touch
+        </a>
+      </div>
+    </section>
+
+    <!-- ── 02 Education ───────────────────────────────── -->
+    <section id="section-education" class="pt-24 scroll-mt-24">
+      <div class="section-divider reveal">
+        <span class="section-num">02</span>
+        <span class="section-rule"></span>
+        <span class="section-label">Education</span>
+      </div>
+
+      <ul class="space-y-8">
+        <li class="grid grid-cols-[6rem_1fr] gap-4 items-start">
+          <span class="text-xs text-ink-faint pt-0.5 tabular-nums">2023 – Now</span>
+          <div>
+            <p class="text-ink font-medium">Ph.D., Biophysics and Quantitative Biology</p>
+            <p class="text-ink-faint text-sm mt-0.5">University of Illinois Urbana-Champaign</p>
+          </div>
+        </li>
+        <li class="grid grid-cols-[6rem_1fr] gap-4 items-start">
+          <span class="text-xs text-ink-muted pt-0.5 tabular-nums">2018 - 2023</span>
+          <div>
+            <p class="text-ink font-medium">B.S., Physics with a dual-minor in Mathematics/Cinema and Television Arts</p>
+            <p class="text-ink-faint text-sm mt-0.5">California State University, Fullerton</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ── 03 Research ───────────────────────────────── -->
+    <section id="section-research" class="pt-24 scroll-mt-24">
+      <div class="section-divider reveal">
+        <span class="section-num">03</span>
+        <span class="section-rule"></span>
+        <span class="section-label">Research</span>
+      </div>
+
+      <!-- Short research statement -->
+      <p class="text-ink-muted leading-relaxed text-base max-w-prose mb-10">
+        Biology is full of surprises... so is the toolkit we use to study it.
+        Here are some of the project areas that have kept me busy (or just kept me curious).
+      </p>
+
+      <!-- Research interests grid -->
+      <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {[
+          { label: 'Protein Trafficking',       desc: 'Cellular protein recruitment' },
+          { label: 'Receptor Tyrosine Kinases',desc: 'Signaling across the membrane' },
+          { label: 'Protein-Protein Dimerization',       desc: 'Oligomerization Dynamics' },
+          { label: 'Phospholipid Binding Kinetics',        desc: 'Protein affinities at membrane interfaces' },
+          { label: 'Optogenetic Cell Death',        desc: 'Light-controlled Necroptosis' },
+          { label: 'Free energy barriers',       desc: 'Markov State Modeling, Data Decomposition, Transition Pathways' },
+          { label: 'Interaction Free Energies',       desc: 'Changes in Gibbs, Helmholtz, or Entropy that govern cellular processes' },
+          { label: 'Minimal In-Cell Modeling',       desc: 'Atomstic Cytoplasm Remodeling' },
+          { label: 'Small-Molecule Drug Kinetics',       desc: 'Effects of solvation and vdW dynamics' },
+        ].map(item => (
+          <li class="flex gap-3 p-4 rounded-lg bg-surface-raised border border-line hover:border-line-strong transition-colors">
+            <span class="text-accent mt-0.5 text-xs leading-5">▸</span>
+            <div>
+              <p class="text-ink text-sm font-medium">{item.label}</p>
+              <p class="text-ink-muted text-xs mt-0.5">{item.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- ── 04 Methods & Skills ───────────────────────── -->
+    <section id="section-methods" class="pt-24 scroll-mt-24">
+      <div class="section-divider reveal">
+        <span class="section-num">04</span>
+        <span class="section-rule"></span>
+        <span class="section-label">Methods &amp; Skills</span>
+      </div>
+
+      <div class="space-y-10">
+
+        <!-- Computational Biophysics -->
+        <div>
+          <h3 class="text-ink font-semibold text-sm mb-4">Computational Biophysics</h3>
+          <dl class="space-y-2.5">
+            {[
+              { label: 'Molecular Dynamics',             value: 'NAMD, GROMACS, AMBER, OpenMM, MARTINI' },
+              { label: 'Docking',                        value: 'HADDOCK & AutoDock' },
+              { label: 'Scientific / ML Analysis',       value: 'MDAnalysis, MDTraj, VMD, PyTorch, TensorFlow' },
+              { label: 'Protein Prediction & Bioinformatics', value: 'DESeq2, edgeR, AlphaFold2/3, ESMFold, OpenFold' },
+              { label: 'Visualization',                  value: 'Blender, PyMOL, VMD, ChimeraX, Fiji (ImageJ)' },
+              { label: 'Enhanced Sampling',              value: 'Plumed & WESTPA2' },
+            ].map(row => (
+              <div class="grid grid-cols-[13rem_1fr] gap-3 text-sm">
+                <dt class="text-accent font-medium shrink-0">{row.label}</dt>
+                <dd class="text-ink-muted">{row.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <!-- Computer Administration -->
+        <div>
+          <h3 class="text-ink font-semibold text-sm mb-4">Computer Administration</h3>
+          <p class="text-ink-muted text-sm leading-relaxed">
+            Linux server management/administration (Ubuntu/Arch), SLURM Configuration/Setup, Docker Management, HPC cluster management (DGX Ampere/Grace Hopper)
+          </p>
+        </div>
+
+        <!-- Programming Languages -->
+        <div>
+          <h3 class="text-ink font-semibold text-sm mb-4">Programming Languages</h3>
+          <div class="flex flex-wrap gap-2">
+            {[
+              { lang: 'Python',  level: 'Expert' },
+              { lang: 'Tcl',     level: 'Expert' },
+              { lang: 'Bash',    level: 'Expert' },
+              { lang: 'C++',     level: 'Proficient' },
+              { lang: 'R',       level: 'Proficient' },
+              { lang: 'HTML/CSS',       level: 'Proficient' },
+              { lang: 'Perl',       level: 'Novice' }, 
+              { lang: 'Julia',   level: 'Novice' },
+            ].map(item => (
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs
+                            bg-surface-raised border border-line
+                            hover:border-line-strong transition-colors cursor-default">
+                <span class="text-azure">{item.lang}</span>
+                <span class="text-ink-muted">{item.level}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <!-- Relevant Coursework -->
+        <div>
+          <h3 class="text-ink font-semibold text-sm mb-4">Relevant Coursework</h3>
+          <p class="text-ink-muted text-sm leading-relaxed">
+            Graduate Machine Learning for Bioinformatics (CS 582), Graduate Statistical Thermodynamics (CHEM 544),
+            Graduate Scientific Writing (MCB 540), Physical Biochemistry (MCB 446)
+          </p>
+        </div>
+
+        <!-- Experimental Techniques -->
+        <div>
+          <h3 class="text-ink font-semibold text-sm mb-4">Experimental Techniques</h3>
+          <dl class="space-y-2.5">
+            {[
+              { label: 'Microscopy',          value: 'TIRF, epifluorescence, live cell imaging, confocal, MINFLUX super resolution, Electron Microscopy (TEM)' },
+              { label: 'Molecular Biology',   value: 'PCR, qRT-PCR, molecular cloning, western blot, SDS/Agarose gels, RNA purification, RNA-seq prep, transfection, transduction' },
+              { label: 'Cell Biology',        value: 'Cell culture, primary neuron culture, lentiviral culture, AAV, cell death assays' },
+              { label: 'Protein Biochemistry',value: 'Protein purification, size-exclusion chromatography (SEC), nanodiscs, extracellular vesicle prep, surface plasmon resonance (SPR), Bio-Layer Interferometry (BLI)' },
+            ].map(row => (
+              <div class="grid grid-cols-[13rem_1fr] gap-3 text-sm">
+                <dt class="text-accent font-medium shrink-0">{row.label}</dt>
+                <dd class="text-ink-muted">{row.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ── Contact CTA ───────────────────────────────── -->
+    <section class="pt-24 reveal">
+      <div class="rounded-xl border border-line bg-surface-raised p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div>
+          <p class="text-ink font-medium">Want to work together?</p>
+          <p class="text-ink-muted text-sm mt-1">Collaborations, figures, or just a question about the work.</p>
+        </div>
+        <a href="/contact" class="btn btn-primary shrink-0">
+          Get in touch
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>

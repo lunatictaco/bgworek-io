@@ -31,21 +31,23 @@ const ungrouped = bySection.get('') ?? [];
 ---
 
 <BaseLayout title="Scientific Work — Bryan Gworek" description="Scientific imagery and microscopy from the lab.">
-  <div class="max-w-5xl mx-auto px-8 md:px-6 pt-36 pb-32">
+  <div class="max-w-6xl mx-auto px-8 md:px-6 pt-36 pb-32">
 
     <!-- Breadcrumb -->
-    <nav class="mb-10 flex items-center gap-2 text-xs text-neutral-600" aria-label="Breadcrumb">
+    <nav class="mb-10 flex items-center gap-2 text-xs text-ink-faint" aria-label="Breadcrumb">
       <a href="/visuals" class="hover:text-accent transition-colors">Visuals</a>
-      <span class="text-neutral-700">/</span>
-      <span class="text-neutral-400">Scientific Work</span>
+      <span class="text-ink-faint">/</span>
+      <span class="text-ink-muted">Scientific Work</span>
     </nav>
 
-    <header class="mb-12" id="sci-header">
+    <header class="mb-16 reveal is-in" id="sci-header">
       <div class="page-divider">
         <span class="pd-rule"></span>
-        <span class="pd-label">“Don't try to be original, just try to be good” - Paul Rand</span>
+        <span class="pd-label">“Don't try to be original, just try to be good” — Paul Rand</span>
         <span class="pd-rule"></span>
       </div>
+      <h1 class="font-display font-bold text-ink text-6xl md:text-7xl leading-[0.95] tracking-tight">Scientific<br />illustration</h1>
+      <p class="mt-5 text-ink-muted leading-relaxed max-w-prose">Membranes, proteins and the molecules between them, rendered in Blender with Molecular Nodes. Click any piece to see it full size.</p>
     </header>
 
     {images.length > 0 ? (
@@ -72,9 +74,9 @@ const ungrouped = bySection.get('') ?? [];
           if (sectionImages.length === 0) return null;
           return (
             <section class={ungrouped.length > 0 || i > 0 ? 'mt-20' : ''}>
-              <div class="mb-8">
-                <h2 class="text-lg font-semibold text-neutral-200 tracking-tight">{section.name}</h2>
-                <p class="mt-1 text-sm text-neutral-500 max-w-prose">{section.description}</p>
+              <div class="mb-8 reveal">
+                <h2 class="text-lg font-semibold text-ink tracking-tight">{section.name}</h2>
+                <p class="mt-1 text-sm text-ink-faint max-w-prose">{section.description}</p>
               </div>
               <GalleryGrid id={`scientific-gallery-${i}`}>
                 {sectionImages.map(img => (
@@ -93,21 +95,16 @@ const ungrouped = bySection.get('') ?? [];
         })}
       </>
     ) : (
-      <div class="text-center py-28 text-neutral-600">
+      <div class="text-center py-28 text-ink-faint">
         <svg class="w-10 h-10 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"
             d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
         </svg>
-        <p class="text-neutral-500 font-medium">No images yet</p>
-        <p class="text-sm mt-2 text-neutral-700">
-          Add images to <code class="bg-neutral-900 px-1.5 py-0.5 rounded text-xs">public/images/scientific/</code>
+        <p class="text-ink-faint font-medium">No images yet</p>
+        <p class="text-sm mt-2 text-ink-faint">
+          Add images to <code class="bg-surface-raised px-1.5 py-0.5 rounded text-xs">public/images/scientific/</code>
         </p>
       </div>
     )}
   </div>
 </BaseLayout>
-
-<script>
-  import { animate } from 'motion';
-  animate('#sci-header', { opacity: [0, 1], y: [10, 0] }, { duration: 0.5, easing: 'ease-out' });
-</script>

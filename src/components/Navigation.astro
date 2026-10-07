@@ -1,118 +1,52 @@
 ---
 const { pathname } = Astro.url;
 
-function isActive(href: string) {
-  if (href === '/') return pathname === '/';
-  return pathname.startsWith(href);
-}
+// Work leads; Contact lives in About and the footer.
+const links = [
+  { href: '/visuals/scientific', label: 'Work',    match: ['/visuals/scientific', '/visuals'] },
+  { href: '/visuals/film',       label: 'Film',    match: ['/visuals/film'] },
+  { href: '/writing',            label: 'Writing', match: ['/writing'] },
+  { href: '/about',              label: 'About',   match: ['/about', '/contact'] },
+];
 
-const isVisualsActive = pathname.startsWith('/visuals');
+function isActive(match: string[]) {
+  // /visuals/film must not also light up Work
+  if (match.includes('/visuals') && pathname.startsWith('/visuals/film')) return false;
+  return match.some((m) => pathname === m || pathname.startsWith(m + '/'));
+}
 ---
 
 <header id="site-nav" class="fixed top-0 left-0 right-0 z-50">
-  <nav class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+  <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between" aria-label="Main">
 
     <!-- Wordmark -->
     <a
       href="/"
-      class="text-xs font-medium tracking-[0.18em] uppercase text-neutral-400 hover:text-accent transition-colors duration-200"
+      class="inline-flex items-center gap-2.5 text-xs font-medium tracking-[0.18em] uppercase text-ink hover:text-accent transition-colors duration-200"
     >
+      <img src="/favicon.svg" alt="" width="22" height="22" class="w-[22px] h-[22px]" />
       Bryan Gworek
     </a>
 
     <!-- ── Desktop links ──────────────────────────── -->
     <ul class="hidden md:flex items-center gap-8 text-sm">
-
-      <!-- Writing -->
-      <li>
-        <a
-          href="/writing"
-          class={`tracking-wide transition-colors duration-200 hover:text-accent ${
-            isActive('/writing') ? 'text-accent' : 'text-neutral-400'
-          }`}
-          aria-current={isActive('/writing') ? 'page' : undefined}
-        >
-          Writing
-        </a>
-      </li>
-
-      <!-- Visuals (with dropdown) -->
-      <li class="relative group">
-        <a
-          href="/visuals"
-          class={`flex items-center gap-1 tracking-wide transition-colors duration-200 hover:text-accent ${
-            isVisualsActive ? 'text-accent' : 'text-neutral-400'
-          }`}
-          aria-haspopup="true"
-          aria-current={isVisualsActive ? 'page' : undefined}
-        >
-          Visuals
-          <svg
-            class="w-3 h-3 mt-0.5 transition-transform duration-200 group-hover:rotate-180"
-            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"
-            aria-hidden="true"
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class={`tracking-wide transition-colors duration-200 hover:text-accent ${isActive(l.match) ? 'text-accent' : 'text-ink-muted'}`}
+            aria-current={isActive(l.match) ? 'page' : undefined}
           >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </a>
-
-        <!-- Dropdown panel -->
-        <div
-          class="absolute top-full right-0 pt-3
-                 opacity-0 invisible translate-y-1
-                 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
-                 focus-within:opacity-100 focus-within:visible focus-within:translate-y-0
-                 transition-all duration-200 ease-out"
-        >
-          <div class="bg-neutral-900 border border-white/8 rounded-xl py-1.5 min-w-[200px] shadow-2xl shadow-black/70">
-            <a
-              href="/visuals/scientific"
-              class={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors duration-150 hover:bg-white/5 hover:text-accent ${
-                pathname === '/visuals/scientific' ? 'text-accent' : 'text-neutral-300'
-              }`}
-            >
-              <svg class="w-4 h-4 flex-shrink-0 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-              </svg>
-              Scientific Work
-            </a>
-            <a
-              href="/visuals/film"
-              class={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors duration-150 hover:bg-white/5 hover:text-accent ${
-                pathname === '/visuals/film' ? 'text-accent' : 'text-neutral-300'
-              }`}
-            >
-              <svg class="w-4 h-4 flex-shrink-0 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
-              </svg>
-              Film Photography
-            </a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Contact -->
-      <li>
-        <a
-          href="/contact"
-          class={`tracking-wide transition-colors duration-200 hover:text-accent ${
-            isActive('/contact') ? 'text-accent' : 'text-neutral-400'
-          }`}
-          aria-current={isActive('/contact') ? 'page' : undefined}
-        >
-          Contact
-        </a>
-      </li>
+            {l.label}
+          </a>
+        </li>
+      ))}
     </ul>
 
     <!-- ── Mobile hamburger ───────────────────────── -->
     <button
       id="menu-toggle"
-      class="md:hidden p-2 -mr-2 text-neutral-400 hover:text-accent transition-colors"
+      class="md:hidden p-2 -mr-2 text-ink-muted hover:text-accent transition-colors"
       aria-label="Toggle menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -127,46 +61,21 @@ const isVisualsActive = pathname.startsWith('/visuals');
   </nav>
 
   <!-- ── Mobile menu drawer ─────────────────────────── -->
-  <div
-    id="mobile-menu"
-    class="hidden md:hidden border-t border-white/6 bg-neutral-950/95 backdrop-blur-md"
-  >
-    <ul class="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-1 text-sm">
+  <div id="mobile-menu" class="hidden md:hidden border-t border-line bg-surface/95 backdrop-blur-md">
+    <ul class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1 text-sm">
+      {links.map((l) => (
+        <li>
+          <a
+            href={l.href}
+            class={`block py-2.5 transition-colors hover:text-accent ${isActive(l.match) ? 'text-accent' : 'text-ink-muted'}`}
+            aria-current={isActive(l.match) ? 'page' : undefined}
+          >
+            {l.label}
+          </a>
+        </li>
+      ))}
       <li>
-        <a href="/writing"
-           class={`block py-2.5 transition-colors hover:text-accent ${isActive('/writing') ? 'text-accent' : 'text-neutral-300'}`}>
-          Writing
-        </a>
-      </li>
-      <!-- Visuals with nested items -->
-      <li>
-        <button
-          id="mobile-visuals-toggle"
-          class={`w-full flex items-center justify-between py-2.5 transition-colors hover:text-accent ${isVisualsActive ? 'text-accent' : 'text-neutral-300'}`}
-        >
-          Visuals
-          <svg id="mobile-visuals-icon" class="w-4 h-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        <ul id="mobile-visuals-submenu" class={`pl-4 flex-col gap-1 ${isVisualsActive ? 'flex' : 'hidden'}`}>
-          <li>
-            <a href="/visuals/scientific"
-               class={`block py-2 text-sm transition-colors hover:text-accent ${pathname === '/visuals/scientific' ? 'text-accent' : 'text-neutral-400'}`}>
-              Scientific Work
-            </a>
-          </li>
-          <li>
-            <a href="/visuals/film"
-               class={`block py-2 text-sm transition-colors hover:text-accent ${pathname === '/visuals/film' ? 'text-accent' : 'text-neutral-400'}`}>
-              Film Photography
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="/contact"
-           class={`block py-2.5 transition-colors hover:text-accent ${isActive('/contact') ? 'text-accent' : 'text-neutral-300'}`}>
+        <a href="/contact" class={`block py-2.5 transition-colors hover:text-accent ${pathname.startsWith('/contact') ? 'text-accent' : 'text-ink-muted'}`}>
           Contact
         </a>
       </li>
@@ -185,7 +94,7 @@ const isVisualsActive = pathname.startsWith('/visuals');
     navAbort = new AbortController();
     const { signal } = navAbort;
 
-    // ── Scroll: darken nav when past top ──────────────
+    // ── Scroll: solid bar once past the top (always on inner pages) ──
     const nav = document.getElementById('site-nav');
     const isHome = window.location.pathname === '/';
     function updateScrollState() {
@@ -195,8 +104,8 @@ const isVisualsActive = pathname.startsWith('/visuals');
     window.addEventListener('scroll', updateScrollState, { passive: true, signal });
 
     // ── Mobile: hamburger toggle ───────────────────────
-    const toggle   = document.getElementById('menu-toggle');
-    const menu     = document.getElementById('mobile-menu') as HTMLElement | null;
+    const toggle    = document.getElementById('menu-toggle');
+    const menu      = document.getElementById('mobile-menu') as HTMLElement | null;
     const iconOpen  = document.getElementById('icon-open');
     const iconClose = document.getElementById('icon-close');
 
@@ -224,18 +133,6 @@ const isVisualsActive = pathname.startsWith('/visuals');
     toggle?.addEventListener('click', () => {
       if (menu?.classList.contains('hidden')) openMenu();
       else closeMenu();
-    }, { signal });
-
-    // ── Mobile: Visuals sub-menu toggle ───────────────
-    const visualsToggle = document.getElementById('mobile-visuals-toggle');
-    const visualsIcon   = document.getElementById('mobile-visuals-icon');
-    const visualsSub    = document.getElementById('mobile-visuals-submenu');
-
-    visualsToggle?.addEventListener('click', () => {
-      const isHidden = visualsSub?.classList.contains('hidden');
-      visualsSub?.classList.toggle('hidden', !isHidden);
-      visualsSub?.classList.toggle('flex', isHidden ?? false);
-      visualsIcon?.classList.toggle('rotate-180', isHidden ?? false);
     }, { signal });
 
     // Close mobile menu on nav link click

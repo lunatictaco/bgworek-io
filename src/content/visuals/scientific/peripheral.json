@@ -1,0 +1,11 @@
+{
+  "title": "Peripheral protein",
+  "description": "A beta-rich fold docking on the inner leaflet",
+  "category": "scientific",
+  "image": "/images/scientific/peripheral.webp",
+  "thumbnail": "/images/scientific/thumbs/peripheral.webp",
+  "width": 3200,
+  "height": 2200,
+  "order": 3,
+  "subsection": "Concepts and Ideas"
+}

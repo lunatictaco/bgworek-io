@@ -1,0 +1,11 @@
+{
+  "title": "Cover concept",
+  "description": "Glowing complexes drifting through the cytoplasm",
+  "category": "scientific",
+  "image": "/images/scientific/cover_v2.webp",
+  "thumbnail": "/images/scientific/thumbs/cover_v2.webp",
+  "width": 2700,
+  "height": 3750,
+  "order": 2,
+  "subsection": "Concepts and Ideas"
+}

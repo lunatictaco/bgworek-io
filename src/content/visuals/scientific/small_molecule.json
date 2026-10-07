@@ -1,0 +1,11 @@
+{
+  "title": "Small-molecule partitioning",
+  "description": "Solutes settling onto a membrane surface",
+  "category": "scientific",
+  "image": "/images/scientific/small_molecule.webp",
+  "thumbnail": "/images/scientific/thumbs/small_molecule.webp",
+  "width": 3200,
+  "height": 2200,
+  "order": 5,
+  "subsection": "Concepts and Ideas"
+}

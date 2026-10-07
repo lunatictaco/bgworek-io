@@ -1,0 +1,11 @@
+{
+  "title": "All-atom bilayer",
+  "description": "Cholesterol in ochre between phospholipid tails",
+  "category": "scientific",
+  "image": "/images/scientific/all_atom.webp",
+  "thumbnail": "/images/scientific/thumbs/all_atom.webp",
+  "width": 3200,
+  "height": 2200,
+  "order": 6,
+  "subsection": "Concepts and Ideas"
+}
