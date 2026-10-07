@@ -6,9 +6,12 @@ interface Props {
   width?: number;
   height?: number;
   thumbnail?: string;
+  /** Show the hover chip and lightbox caption (off for scientific work for now) */
+  showCaption?: boolean;
 }
 
-const { src, title, description, width = 800, height = 600, thumbnail } = Astro.props;
+const { src, title, description, width = 800, height = 600, thumbnail, showCaption = true } = Astro.props;
+const caption = showCaption ? description : '';
 const thumbSrc = thumbnail ?? src;
 ---
 
@@ -26,7 +29,7 @@ const thumbSrc = thumbnail ?? src;
       alt={title}
       width={width}
       height={height}
-      data-caption={description}
+      data-caption={caption || undefined}
       loading="lazy"
       draggable="false"
       class="w-full h-auto transition-transform duration-500 group-hover:scale-[1.03] select-none"
@@ -37,7 +40,7 @@ const thumbSrc = thumbnail ?? src;
 
     <!-- Hover caption chip (scrim + ink, replaces the old black gradient).
          Skipped when there's no description: film titles are frame numbers. -->
-    {description && <div
+    {caption && <div
       class="z-[2] absolute left-2 right-2 bottom-2 px-3 py-2.5 rounded-md
              text-ink text-xs font-medium leading-snug tracking-wide
              opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0

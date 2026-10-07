@@ -1,0 +1,11 @@
+{
+  "title": "Lipid close-up",
+  "description": "Ball-and-stick lipids in the membrane core",
+  "category": "scientific",
+  "image": "/images/scientific/closeup_dimer_amb.webp",
+  "thumbnail": "/images/scientific/thumbs/closeup_dimer_amb.webp",
+  "width": 2160,
+  "height": 1080,
+  "order": 7,
+  "subsection": "Concepts and Ideas"
+}

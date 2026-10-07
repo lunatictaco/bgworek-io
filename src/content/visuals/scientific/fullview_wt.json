@@ -1,0 +1,11 @@
+{
+  "title": "Membrane full view",
+  "description": "A protein resting on a mixed-lipid bilayer",
+  "category": "scientific",
+  "image": "/images/scientific/fullview_wt.webp",
+  "thumbnail": "/images/scientific/thumbs/fullview_wt.webp",
+  "width": 1920,
+  "height": 1080,
+  "order": 8,
+  "subsection": "Concepts and Ideas"
+}

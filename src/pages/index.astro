@@ -12,10 +12,10 @@ const film = allVisuals
 
 // The wide membrane is the hero band; the rest fill the featured grid.
 const HERO_IMAGE = '/images/scientific/complex_membrane_wide.webp';
-const featured = scientific.filter(v => v.data.image !== HERO_IMAGE).slice(0, 7);
+const featured = scientific.filter(v => v.data.image !== HERO_IMAGE).slice(0, 9);
 
-// Editorial rhythm: lg + sm / md + md / md + md / wide
-const slots = ['is-lg', 'is-sm', 'is-md', 'is-md', 'is-md', 'is-md', 'is-wide'];
+// Editorial rhythm: lg + sm / md + md / md + md / md + md / wide
+const slots = ['is-lg', 'is-sm', 'is-md', 'is-md', 'is-md', 'is-md', 'is-md', 'is-md', 'is-wide'];
 
 const filmCover = film[0];
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -48,7 +48,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
       </div>
       <div class="md:pb-3">
         <p class="text-lg leading-[30px] font-light text-ink-muted max-w-[34ch] mb-5">
-          I render membranes, proteins and the molecules between them, with Blender and Molecular Nodes.
+          I like to render membranes, proteins and the molecules between them.
         </p>
         <div class="flex flex-wrap gap-3">
           <a href="/visuals/scientific" class="btn btn-primary">
@@ -86,13 +86,6 @@ const pad = (n: number) => String(n).padStart(2, '0');
                 draggable="false"
                 class="select-none"
               />
-            </div>
-            <div class="flex justify-between items-baseline gap-4">
-              <div>
-                <p class="plate-title">{item.data.title}</p>
-                <p class="plate-caption">{item.data.description}</p>
-              </div>
-              <span class="plate-index">{pad(i + 1)}</span>
             </div>
           </a>
         ))}
