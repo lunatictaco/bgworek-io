@@ -107,10 +107,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </ul>
     </section>
 
-    <!-- ── 03 Research ───────────────────────────────── -->
-    <section id="section-research" class="pt-24 scroll-mt-24">
+    <!-- ── 03 Awards & Recognitions ─────────────────── -->
+    <section id="section-awards" class="pt-24 scroll-mt-24">
       <div class="section-divider reveal">
         <span class="section-num">03</span>
+        <span class="section-rule"></span>
+        <span class="section-label">Awards &amp; Recognitions</span>
+      </div>
+
+      <ul class="space-y-8">
+        {[
+          { date: 'Feb 2026', title: 'Student Research Achievement Award (SRAA): Theory & Computation', org: '70th BPS Meeting · San Francisco, CA' },
+          { date: 'May 2025', title: 'Travel Award', org: 'Gordon Research Conference & Seminar: Mechanisms of Membrane Transport · Les Diablerets, Switzerland' },
+          { date: 'Apr 2022', title: 'Black Family Trust Fellowship', org: 'Dan Black · Fullerton, CA' },
+          { date: 'May 2022', title: 'Norman McFarland Scholarship', org: 'Roman Catholic Diocese of Orange · Orange, CA' },
+        ].map(item => (
+          <li class="grid grid-cols-[6rem_1fr] gap-4 items-start">
+            <span class="text-xs text-ink-faint pt-0.5 tabular-nums">{item.date}</span>
+            <div>
+              <p class="text-ink font-medium">{item.title}</p>
+              <p class="text-ink-faint text-sm mt-0.5">{item.org}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- ── 04 Research ───────────────────────────────── -->
+    <section id="section-research" class="pt-24 scroll-mt-24">
+      <div class="section-divider reveal">
+        <span class="section-num">04</span>
         <span class="section-rule"></span>
         <span class="section-label">Research</span>
       </div>
@@ -145,10 +171,59 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </ul>
     </section>
 
-    <!-- ── 04 Methods & Skills ───────────────────────── -->
+    <!-- ── 05 Presentations ──────────────────────────── -->
+    <section id="section-presentations" class="pt-24 scroll-mt-24">
+      <div class="section-divider reveal">
+        <span class="section-num">05</span>
+        <span class="section-rule"></span>
+        <span class="section-label">Presentations</span>
+      </div>
+
+      <div class="space-y-10">
+        {[
+          {
+            heading: 'Talks',
+            items: [
+              { year: '2026', title: 'Modeling-Informed Experiments Capture Arc-Lipid Interactions Critical to Intercellular Communication', venue: '70th Biophysical Society Meeting · San Francisco, CA' },
+              { year: '2025', title: 'Elucidating the mechanisms underlying phospholipid-mediated capsid formation and binding between Arc and PI(3)P', venue: 'MDAnalysis User Group Meeting · Phoenix/Tempe, AZ' },
+              { year: '2025', title: 'Elucidating the mechanisms underlying phospholipid-mediated capsid formation and binding between Arc and PI(3)P', venue: '39th Gibbs Conference on Biothermodynamics · Carbondale, IL' },
+            ],
+          },
+          {
+            heading: 'Posters',
+            items: [
+              { year: '2026', title: 'Modeling-Informed Experiments Capture Arc-Lipid Interactions Critical to Intercellular Communication', venue: '70th Biophysical Society Meeting (BPS) · San Francisco, CA' },
+              { year: '2025', title: 'Elucidating the mechanisms underlying phospholipid-mediated capsid formation and binding between Arc and PI(3)P', venue: 'Centre Européen de Calcul Atomique et Moléculaire (CECAM) · Madison, WI' },
+              { year: '2025', title: 'Elucidating the mechanisms underlying phospholipid-mediated capsid formation and binding between Arc and PI(3)P', venue: 'Gordon Research Conference (GRC/GRS): Mechanisms of Membrane Transport · Les Diablerets, Switzerland' },
+              { year: '2025', title: 'Elucidating the mechanisms underlying phospholipid-mediated capsid formation and binding between Arc and PI(3)P', venue: '69th Biophysical Society Meeting (BPS) · Los Angeles, CA' },
+              { year: '2023', title: 'Diffusion of DNA in active and passive baths', venue: 'American Physical Society March Meeting · Las Vegas, NV' },
+              { year: '2022', title: 'Designing a nanoscale rocket ship using DNA origami and enzymes', venue: 'Frontiers in Soft Matter and Macromolecular Networks · University of San Diego, San Diego, CA' },
+              { year: '2022', title: 'Designing a nanoscale rocket ship using DNA origami and enzymes', venue: 'Scifest · Brandeis University, Waltham, MA' },
+            ],
+          },
+        ].map(group => (
+          <div>
+            <h3 class="text-ink font-semibold text-sm mb-5">{group.heading}</h3>
+            <ul class="space-y-6">
+              {group.items.map(item => (
+                <li class="grid grid-cols-[6rem_1fr] gap-4 items-start">
+                  <span class="text-xs text-ink-faint pt-0.5 tabular-nums">{item.year}</span>
+                  <div>
+                    <p class="text-ink text-sm leading-relaxed">“{item.title}”</p>
+                    <p class="text-ink-faint text-sm mt-0.5">{item.venue}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── 06 Methods & Skills ───────────────────────── -->
     <section id="section-methods" class="pt-24 scroll-mt-24">
       <div class="section-divider reveal">
-        <span class="section-num">04</span>
+        <span class="section-num">06</span>
         <span class="section-rule"></span>
         <span class="section-label">Methods &amp; Skills</span>
       </div>
